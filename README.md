@@ -13,3 +13,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 4. Langkah selanjutnya saya membuat file main.go
 
 5. Setelah itu saya mengimport package dan library yang nantinya akan saya pakai
+
+6. Dalam function main saya membuat koneksi kedalam MySQL database
