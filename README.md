@@ -23,3 +23,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 9. Langkah selanjutnya saya membuat route untuk menampilkan semua data pada database 
 
 10. Membuat route untuk menyimpan data kedalam database
+
+11. Selanjutnya saya membuat route untuk melakukan edit list of daily disini saya menggunakan method PUT
