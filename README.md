@@ -15,3 +15,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 5. Setelah itu saya mengimport package dan library yang nantinya akan saya pakai
 
 6. Dalam function main saya membuat koneksi kedalam MySQL database
+
+7. Setelah itu saya membuat struct List yang berisi field dalam table listofdaily
