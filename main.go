@@ -127,5 +127,23 @@ router.PUT("/", func(c *gin.Context) {
 			"Message": fmt.Sprintf("Data berhasil diubah %s", data),
 		})
 	})
+	//Route yang saya gunakan untuk menghapus data dengan menggunakan method DELETE
+	router.DELETE("/", func(c *gin.Context) {
+		id := c.PostForm("id")
+		//disini saya melakukan query untuk menghapus data 
+		stmt, err := db.Prepare("delete from listofdaily where id= ?;")
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		_, err = stmt.Exec(id)
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		c.JSON(http.StatusOK, gin.H{
+			"Message": fmt.Sprintf("Data Berhasil dihapus %s", id),
+		})
+	})
+	//untuk menjalankan server pada port 8080
+	router.Run(":8080")
 
 }
