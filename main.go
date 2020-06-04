@@ -33,5 +33,21 @@ func main(){
 			list List
 			result gin.H
 		)
+		id := c.Param("id")
+		//query untuk mengambul data dalam database listofdaily
+		row := db.QueryRow("select id, year, quarter from listofdaily where id = ?;", id)
+		err = row.Scan(&list.Id, &list.Year, &list.Quarter)
+		if err != nil{
+			//jika datanya tidak ada maka akan dikirimkan null
+			result = gin.H {
+				"Hasil" : "Mohon maaf data tidak ditemukan",
+				"Jumlah" : 0,
+			}
+		}else {
+			result = gin.H{
+				"Hasil" : "List Of Daily"
+			}
+		}
+		c.JSON(http.StatusOK, result)
 	})
 }
