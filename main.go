@@ -27,4 +27,11 @@ func main(){
 		Year string `json: "year"`
 		Quarter string `json: "quarter"`
 	}
+	//menampilkan data berdasarkan id 
+	router.GET("/:id", func(c *gin.Context){
+		var (
+			list List
+			result gin.H
+		)
+	})
 }
