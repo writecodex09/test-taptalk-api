@@ -1,5 +1,6 @@
 package main
 
+//melakukan import package dan library yang dibutuhkan
 import (
 	"bytes"
 	"fmt"
@@ -11,5 +12,6 @@ import (
 )
 
 func main(){
-	fmt.Println("Sukses")
+	//membuat koneksi ke dalam database
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1)/taptalk-api")
 }
