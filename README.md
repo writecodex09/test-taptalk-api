@@ -19,3 +19,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 7. Setelah itu saya membuat struct List yang berisi field dalam table listofdaily
 
 8. Selanjutnya saya membuat route untuk menampilkan detail data list of daily berdasarkan id
+
+9. Langkah selanjutnya saya membuat route untuk menampilkan semua data pada database 
