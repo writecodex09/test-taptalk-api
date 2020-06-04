@@ -11,3 +11,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 3. Langkah selanjutnya saya membuat database yang akan menampung data list of daily
 
 4. Langkah selanjutnya saya membuat file main.go
+
+5. Setelah itu saya mengimport package dan library yang nantinya akan saya pakai
