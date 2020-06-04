@@ -74,5 +74,11 @@ func main(){
 			"Jumlah" : len(lists),
 		})
 	})
-	
+
+	//Menambahkan List Of Daily
+	//Disini method yang saya gunakan adalah POST
+	router.POST("/", func(c *gin.Context){
+		
+	})
+
 }
