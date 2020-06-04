@@ -9,3 +9,5 @@ dalam pembuatan RESTful API dan menggunakan framework GIN GONIC
 2. Selanjutnya saya menginstall driver MySQL dan framework GIN GONIC
 
 3. Langkah selanjutnya saya membuat database yang akan menampung data list of daily
+
+4. Langkah selanjutnya saya membuat file main.go
