@@ -23,9 +23,9 @@ func main(){
 	router := gin.Default()
 //struct ini berisikan field yang terdapat di database
 	type List struct {
-		Id	int `json: "id"`
-		Year string `json: "year"`
-		Quarter string `json: "quarter"`
+		Id		int 	`json:"id"`
+		Year 	string 	`json:"year"`
+		Quarter string 	`json:"quarter"`
 	}
 	//menampilkan data berdasarkan id 
 	router.GET("/:id", func(c *gin.Context){
@@ -78,7 +78,54 @@ func main(){
 	//Menambahkan List Of Daily
 	//Disini method yang saya gunakan adalah POST
 	router.POST("/", func(c *gin.Context){
-		
+		var buffer bytes.Buffer
+		id := c.PostForm("id")
+		year := c.PostForm("year")
+		quarter := c.PostForm("quarter")
+		//kita akan melakukan query untuk memasukan data kedalam database
+		stmt, err := db.Prepare("insert into listofdaily (id, year, quarter) values(?,?,?);")
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		_, err = stmt.Exec(id, year, quarter)
+
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		// disini saya membuat cara cepat untuk melakukan append string
+		buffer.WriteString(year)
+		buffer.WriteString( " ")
+		buffer.WriteString(quarter)
+		defer stmt.Close()
+		data := buffer.String()
+		c.JSON(http.StatusOK, gin.H{
+			"Message": fmt.Sprintf("List of Daiy berhasil ditambahkan %s", data),
+		})
+	})
+
+router.PUT("/", func(c *gin.Context) {
+		var buffer bytes.Buffer
+		id := c.PostForm("id")
+		year := c.PostForm("year")
+		quarter := c.PostForm("quarter")
+		//saya melakukan query untuk mengupdate data
+		stmt, err := db.Prepare("update listofdaily set year= ?, quarter= ? where id= ?;")
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		_, err = stmt.Exec(year, quarter, id)
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+
+		buffer.WriteString(year)
+		buffer.WriteString(" ")
+		buffer.WriteString(quarter)
+		defer stmt.Close()
+		data := buffer.String()
+		c.JSON(http.StatusOK, gin.H{
+			"Message": fmt.Sprintf("Data berhasil diubah %s", data),
+		})
 	})
 
 }
