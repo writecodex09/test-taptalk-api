@@ -102,7 +102,7 @@ func main(){
 			"Message": fmt.Sprintf("List of Daiy berhasil ditambahkan %s", data),
 		})
 	})
-
+// disini kita akan mengubah/mengupdate data
 router.PUT("/", func(c *gin.Context) {
 		var buffer bytes.Buffer
 		id := c.PostForm("id")
