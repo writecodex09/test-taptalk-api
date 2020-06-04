@@ -45,7 +45,7 @@ func main(){
 			}
 		}else {
 			result = gin.H{
-				"Hasil" : "List Of Daily"
+				"Hasil" : "List Of Daily",
 			}
 		}
 		c.JSON(http.StatusOK, result)
