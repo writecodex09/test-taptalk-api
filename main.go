@@ -50,4 +50,29 @@ func main(){
 		}
 		c.JSON(http.StatusOK, result)
 	})
+
+	//menampilkan semua data pada database, List Of Daily
+	router.GET("/", func(c *gin.Context){
+		var (
+			list List
+			lists []List
+		)
+		rows, err := db.Query("select id, year, quarter from listofdaily;")
+		if err != nil {
+			fmt.Print(err.Error())
+		}
+		for rows.Next(){
+			err = rows.Scan(&list.Id, &list.Year, &list.Quarter)
+			lists = append(lists, list)
+			if err != nil{
+				fmt.Print(err.Error())
+			}
+		}
+		defer rows.Close()
+		c.JSON(http.StatusOK, gin.H{
+			"Hasil" : lists, 
+			"Jumlah" : len(lists),
+		})
+	})
+	
 }
